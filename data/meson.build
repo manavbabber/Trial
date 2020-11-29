@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 icon_sizes = ['32', '48', '64', '128']
 
 foreach i : icon_sizes
@@ -6,6 +7,12 @@ foreach i : icon_sizes
         install_dir: join_paths(get_option('datadir'), 'icons', 'hicolor', i + 'x' + i, 'apps')
     )
 endforeach
+=======
+install_data(
+        join_paths('icons', '32', 'com.github.manavbabber.mana.svg'),
+        install_dir: join_paths(get_option('datadir'), 'icons', 'hicolor', '32' + 'x' + '32', 'apps')
+    )
+>>>>>>> 3f773955296d08323072500d9fd8ba76cf337cfa
 
 i18n.merge_file(
     input: meson.project_name() + '.desktop.in',
