@@ -1,6 +1,13 @@
 # project name and programming language
 project('com.github.manavbabber.Trial', 'vala', 'c')
 
+i18n = import('i18n')
+
+add_project_arguments(
+    '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
+    language: 'c'
+)
+
 # Create a new executable, list the files we want to compile, list the dependencies we need, and install
 executable(
     meson.project_name(),
@@ -15,15 +22,13 @@ executable(
 install_data(
     join_paths('data', 'hello-again.desktop'),
     install_dir: join_paths(get_option('datadir'), 'applications')
-    rename: meson.project_name() + '.desktop'
 )
 
 #Install our .appdata.xml file so AppCenter will see it
 install_data(
     join_paths('data','hello-again.appdata.xml'),
     install_dir: join_paths(get_option('datadir'), 'metainfo')
-    rename: meson.project_name() + '.appdata.xml'
 )
 
 subdir('data')
-
+subdir('po')
